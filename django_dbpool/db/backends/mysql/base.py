@@ -26,13 +26,11 @@ class DatabaseWrapper(MysqlDatabaseWrapper):
 
     def get_connection_params(self):
         params = super().get_connection_params()
-
-        if self.settings_dict.get('POOL_MIN_SIZE'):
-            params['pool_min_size'] = int(self.settings_dict['POOL_MIN_SIZE'])
-        if self.settings_dict.get('POOL_MAX_SIZE'):
-            params['pool_max_size'] = int(self.settings_dict['POOL_MAX_SIZE'])
-        elif params.get('pool_min_size'):
-            params['pool_max_size'] = params['pool_min_size']
+        pool_config = self.settings_dict.get('POOL')
+        if pool_config.get('min_size'):
+            params['pool_min_size'] = int(pool_config['min_size'])
+        if pool_config.get('max_size'):
+            params['pool_max_size'] = int(pool_config['max_size'])
         return params
 
     def get_new_connection(self, conn_params):

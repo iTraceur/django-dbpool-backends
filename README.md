@@ -21,11 +21,12 @@ like this:
         'USER': 'test',
         'PASSWORD': 'test123',
         'HOST': 'localhost',
-        'PORT': '3306',
-        # The POOL_*_SIZE will be used to generate the connection pool instance
-        # Default '0' means unlimit connection pool size
-        'POOL_MIN_SIZE': '10',
-        'POOL_MAX_SIZE': '50',
+        'PORT': 3306,
+        # The POOL will be used to generate the connection pool instance
+        'POOL': {
+            'min_size': 10,  # Default '0' means empty connection pool when start
+            'max_size': 50  # Default '0' means unlimit connection pool size
+        },
         'OPTIONS': {
             'charset': 'utf8mb4',
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
