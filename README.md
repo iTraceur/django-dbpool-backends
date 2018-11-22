@@ -33,3 +33,8 @@ like this:
             'isolation_level': 'read committed'
         }
     }
+
+Links and thanks
+-----
+* [DBUtils by Cito](https://github.com/Cito/DBUtils/)
+* [Django实现MySQL连接池](https://www.jianshu.com/p/e210e6380ade)
